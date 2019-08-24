@@ -1,0 +1,7 @@
+.Expenses tr:nth-child(even) {
+    background-color: #eee;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
