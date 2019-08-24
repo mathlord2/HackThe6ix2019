@@ -58,6 +58,7 @@ h5 {
 a, button {
   text-decoration: none;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 #intro {
@@ -127,23 +128,26 @@ a, button {
   cursor: pointer;
 }
 
-#recordingDiv {
-  margin: 10px 0px;
-  display: flex;
-  width: 40%;
-  border: 1px solid black;
-  padding: 15px;
-  margin-left: 30%;
-  background-color: #ffeddc;
+#addVacation {
+  margin: 20px 0px;
 }
 
-#recordingDiv #recordBtn {
-  margin-left: 5%;
-  width: 70px;
-  height: 70px;
+#addVacation #city {
   border: none;
-  background-color: red;
-  border-radius: 50%;
+  padding: 10px;
+  border-bottom: 1px solid #010146;
+}
+
+#addVacation #add-vacation {
+  margin-left: 10px;
+  border: none;
+  background-color: #6767c5;
+  color: white;
+  padding: 10px;
+}
+
+#addVacation #add-vacation:hover {
+  background-color: #9e9efc;
 }
 
 .title {
@@ -154,55 +158,45 @@ a, button {
   padding: 5px;
 }
 
-.pastInterviews .interview {
+.vacations .vacation {
   position: relative;
   text-align: center;
-  line-height: 2;
-  width: 47%;
+  width: 46%;
   float: left;
-  padding: 15px;
+  font-size: 40px;
+  padding: 20px;
   background-color: #3e3ef5;
   cursor: pointer;
   border-radius: 10px;
-  transition: 0.2s;
   margin-bottom: 10px;
-}
-
-.pastInterviews .interview h2, .pastInterviews .interview p {
   color: white;
+  transition: 0.2s;
 }
 
-.pastInterviews .interview:nth-child(2n) {
+.vacations .vacation:nth-child(2n) {
   float: right;
 }
 
-.pastInterviews .interview:hover {
+.vacations .vacation:hover {
   background-color: #6c6cfd;
 }
 
-.pastInterviews i {
+.vacations i {
   position: absolute;
   top: 10px;
   right: 10px;
   font-size: 30px;
-  color: grey;
+  color: #c2c2c2;
 }
 
-.pastInterviews i:hover {
+.vacations i:hover {
   color: white;
 }
 
-#postInterview {
+#vacationInfo {
   display: none;
-  line-height: 2;
-  padding: 10%;
 }
 
-#postInterview #exitInterview {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-#postInterview #improvement {
-  margin-bottom: 25px;
+#vacationInfo #categories {
+  float: left;
 }
