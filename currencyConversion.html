@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='utf-8'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase.js"></script>
+        <link href="style.css">
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyCIsJXzbLiJwO-IJAUkFMn-eA4QXKsAlyg",
+            authDomain: "budgetcation.firebaseapp.com",
+            databaseURL: "https://budgetcation.firebaseio.com",
+            projectId: "budgetcation",
+            storageBucket: "",
+            messagingSenderId: "482826966898",
+            appId: "1:482826966898:web:01ee6d899297d331"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        </script>
+        <script src="main.js"></script>
+    </head>
+
+    <body>
+        <div class="Header" id="login_div">
+            <input type="email" placeholder="Email" id="email_Field"/>
+
+            <input type="password" placeholder="Password" id="password_Field"/>
+
+            <button> Login Now! </button>
+        </div>
+
+        <div class = "loggedin" id = "user_div">
+            <h3>Welcome User: </h3>
+            <p id="user_para">Welcome to Firebase login system!</p>
+            <button onclick="logout()">Logout</button>
+
+        </div>
+    </body>
+</html>
