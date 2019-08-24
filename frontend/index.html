@@ -4,49 +4,72 @@
         <meta charset='utf-8'>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel='stylesheet' type='text/css' href="css/main.css">
+        <link rel='stylesheet' type='text/css' href="css/firebase.css">
         <link rel='stylesheet' type='text/css' href="css/normalize.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="js/main.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.4.2/firebase.js"></script>
+        <script>
+            // Your web app's Firebase configuration
+            var firebaseConfig = {
+                apiKey: "AIzaSyCIsJXzbLiJwO-IJAUkFMn-eA4QXKsAlyg",
+                authDomain: "budgetcation.firebaseapp.com",
+                databaseURL: "https://budgetcation.firebaseio.com",
+                projectId: "budgetcation",
+                storageBucket: "",
+                messagingSenderId: "482826966898",
+                appId: "1:482826966898:web:01ee6d899297d331"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+        </script>
+        <script src="js/firebase.js"></script>
     </head>
 
     <body>
-        <!--User logged-in for the first time-->
-        <div id="intro">
+        <div id="login_div">
+            <h1 align="center">BudgetCation</h1>
+            <input type="email" placeholder="Email" id="email_field" />
+            <input type="password" placeholder="Password" id="password_field" />
+            <button id="loginBtn">Login</button>
         </div>
         
-        <div id="main">
-            <div class="header">
-                <i class="fa fa-bars"></i>
-                <h1 align="center">Welcome, Eric Xiao.</h1>
+        <div id="user_div">
+            <div id="main">
+                <div class="header">
+                    <i class="fa fa-bars"></i>
+                    <h1 align="center">Welcome.</h1>
+                </div>
+            
+                <div class="sidebar">
+                    <a id="closeSideBar">
+                        <h1>&times;</h1>
+                    </a>
+                    <a id="signOut">
+                        <h1>Sign Out</h1>
+                    </a>
+                </div>
+            
+                <div id="addVacation" align="center">
+                    <input placeholder="Enter City:" id="city">
+                    <button id="add-vacation">Add City</button>
+                </div>
+            
+                <h1 class="title">Vacations:</h1>
+            
+                <div class="vacations">
+                </div>
             </div>
             
-            <div class="sidebar">
-                <a id="closeSideBar"><h1>&times;</h1></a>
-                <a id="signOut"><h1>Sign Out</h1></a>
-            </div>
-                
-            <div id="addVacation" align="center">
-                <input placeholder="Enter City:" id="city">
-                <button id="add-vacation">Add City</button>
-            </div>
-            
-            <h1 class="title">Vacations:</h1>
-            
-            <div class="vacations">
-                <div class="vacation"><i class="fa fa-trash"></i> Beijing</div>
-                <div class="vacation"><i class="fa fa-trash"></i> Paris</div>
-                <div class="vacation"><i class="fa fa-trash"></i> Salt Lake City</div>
-            </div>
-        </div>
-
-        <div id="vacationInfo">
-            <table id="categories">
-                <div class="category">Total</div>
-                <div class="category">Accommodations</div>
-                <div class="category">Food</div>
-                <div class="category">Tickets</div>
+            <div id="vacationInfo">
+                <table id="categories">
+                    <div class="category">General</div>
+                    <div class="category">Accommodations</div>
+                    <div class="category">Tickets</div>
+                    <div class="category">Food</div>
+                </table>
             </div>
             <table>
                 <tr>
@@ -55,6 +78,8 @@
                 <tr>
                 </tr>
             </table>
+            </div>
+
         </div>
     </body>
 </html>

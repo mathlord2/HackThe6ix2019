@@ -8,11 +8,10 @@ function closeSideBar() {
     $('.header i').css({ 'right': '10px' });
 }
 
-window.onload = function() {
-    $('.header i').click(openSideBar);
-    $('#closeSideBar').click(closeSideBar);
-}
+$(document).on('click', '.header i', openSideBar);
+$(document).on('click', '#closeSideBar', closeSideBar);
 
 $(document).on('click', '.vacation', function() {
-    
+    $('#main').css({ 'display': 'none' });
+    $('#vacationInfo').css({ 'display': 'block' });
 });
