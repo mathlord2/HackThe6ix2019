@@ -15,18 +15,60 @@
         <!--User logged-in for the first time-->
         <div id="intro">
         </div>
-
-        <div class="header">
-            <i class="fa fa-bars"></i>
-            <h1 align="center">Welcome Eric Xiao. Would you like to do a mock interview today?</h1>
-        </div>
-
-        <div class="sidebar">
-            <a id="closeSideBar"><h1>&times;</h1></a>
-        </div>
-
-        <div class="pastInterviews">
+        
+        <div id="main">
+            <div class="header">
+                <i class="fa fa-bars"></i>
+                <h1 align="center">Welcome, Eric Xiao. Time for a mock interview!</h1>
+            </div>
             
+            <div class="sidebar">
+                <a id="closeSideBar"><h1>&times;</h1></a>
+                <a id="signOut"><h1>Sign Out</h1></a>
+                <a id="settings"><h1>Settings</h1></a>
+            </div>
+            
+            <div id="recordingDiv">
+                <h1>Start Recording Now:</h1>
+                <button id="recordBtn"></button>
+            </div>
+            
+            <h1 class="title">Past Interviews:</h1>
+            
+            <div class="pastInterviews">
+                <div class="interview" repeated="uh, um, ah" improvement="Using a certain word relatively often in your interview can actually be used against.
+                Broadening your language skill set is very important to have a successful interview.
+                Here is a list of things you can do to practice your language skill set:" tips="Don't rush.+;Try to stay calm.">
+                    <i class="fa fa-trash"></i>
+                    <h2>Partner: Kevin Gao</h2>
+                    <p>Date: June 1, 2019</p>
+                </div>
+                <div class="interview" repeated="yeah, so" improvement="Using a certain word relatively often in your interview can actually be used against.
+                Broadening your language skill set is very important to have a successful interview.
+                Here is a list of things you can do to practice your language skill set:" tips="Don't rush.+;Try to stay calm.">
+                    <i class="fa fa-trash"></i>
+                    <h2>Partner: Kevin Gao</h2>
+                    <p>Date: June 1, 2019</p>
+                </div>
+                <div class="interview" repeated="oh, uh" improvement="Using a certain word relatively often in your interview can actually be used against.
+                Broadening your language skill set is very important to have a successful interview.
+                Here is a list of things you can do to practice your language skill set:" tips="Don't rush.+;Try to stay calm.">
+                    <i class="fa fa-trash"></i>
+                    <h2>Partner: Deadpool Gang</h2>
+                    <p>Date: August 23, 2019</p>
+                </div>
+            </div>
+        </div>
+        
+        <div id="settingsPage">
+        </div>
+
+        <div id="postInterview">
+            <a id="exitInterview">&larr; Back</a>
+            <h2 id="repeatedWords"></h2>
+            <h3 id="improvement"></h3>
+            <ul id="tips">
+            </ul>
         </div>
     </body>
 </html>
