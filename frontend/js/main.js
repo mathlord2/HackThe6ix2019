@@ -12,3 +12,7 @@ window.onload = function() {
     $('.header i').click(openSideBar);
     $('#closeSideBar').click(closeSideBar);
 }
+
+$(document).on('click', '.vacation', function() {
+    
+});

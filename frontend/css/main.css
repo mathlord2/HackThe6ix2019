@@ -58,6 +58,7 @@ h5 {
 a, button {
   text-decoration: none;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 #intro {
@@ -70,6 +71,11 @@ a, button {
   border: 2px solid black;
   padding: 5px;
   background-color: #e6e6e6;
+}
+
+#main {
+  width: 100%;
+  height: 100%;
 }
 
 .header {
@@ -97,6 +103,7 @@ a, button {
 }
 
 .sidebar {
+  z-index: 2;
   width: 0;
   height: 100%;
   position: fixed;
@@ -104,6 +111,7 @@ a, button {
   right: 0;
   overflow-x: hidden;
   background-color: lightgrey;
+  text-align: center;
 }
 
 .sidebar #closeSideBar {
@@ -114,4 +122,81 @@ a, button {
 
 .sidebar #closeSideBar:hover h1 {
   color: white;
+}
+
+.sidebar a {
+  cursor: pointer;
+}
+
+#addVacation {
+  margin: 20px 0px;
+}
+
+#addVacation #city {
+  border: none;
+  padding: 10px;
+  border-bottom: 1px solid #010146;
+}
+
+#addVacation #add-vacation {
+  margin-left: 10px;
+  border: none;
+  background-color: #6767c5;
+  color: white;
+  padding: 10px;
+}
+
+#addVacation #add-vacation:hover {
+  background-color: #9e9efc;
+}
+
+.title {
+  text-align: center;
+  margin: 30px 0px 10px 0px;
+  border: none;
+  border-bottom: 5px solid black;
+  padding: 5px;
+}
+
+.vacations .vacation {
+  position: relative;
+  text-align: center;
+  width: 46%;
+  float: left;
+  font-size: 40px;
+  padding: 20px;
+  background-color: #3e3ef5;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  color: white;
+  transition: 0.2s;
+}
+
+.vacations .vacation:nth-child(2n) {
+  float: right;
+}
+
+.vacations .vacation:hover {
+  background-color: #6c6cfd;
+}
+
+.vacations i {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: #c2c2c2;
+}
+
+.vacations i:hover {
+  color: white;
+}
+
+#vacationInfo {
+  display: none;
+}
+
+#vacationInfo #categories {
+  float: left;
 }
