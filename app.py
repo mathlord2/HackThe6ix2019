@@ -19,34 +19,34 @@ def read_data(db) -> dict:
     return db.child('users').get().val()
 
 
-@app.route("/new-profile", methods=['PUT', 'POST'])
+@app.route("/new-profile", methods=['POST'])
 def create_user_profile(db, userToken, name): #Done
     db.child('users').update({name: {'trips': {}, 'token ID': userToken}})
 
 
-@app.route("/new-trip", methods=['PUT', 'POST'])
+@app.route("/new-trip", methods=['POST'])
 def create_trip_plan(db, name, tripName, tripLoc):
     db.child('users').child(name).child('trips').update({tripName:{'Location': tripLoc,
                                                           'Budget': {}}})
 
 
-@app.route("/add-budget", methods=['PUT', 'POST'])
+@app.route("/add-budget", methods=['POST'])
 def push_budget(db, name, tripName, transID, transName, transAmount):
     db.child('users').child(name).child('trips').child(tripName).child('Budget').\
         update({str(transID): {'name': str(transName), 'amount': transAmount}})
 
 
-@app.route("/remove-trip", methods=['PUT', 'POST'])
+@app.route("/remove-trip", methods=['POST'])
 def remove_trip_data(db, name, tripName):
     db.child('users').child(name).child('trips').child(tripName).remove()
 
 
-@app.route("/reset-budget", methods=['PUT', 'POST'])
+@app.route("/reset-budget", methods=['POST'])
 def reset_budget_data(db, name, tripName):
     db.child('users').child(name).child('trips').child(tripName).child('Budget').set({})
 
 
-@app.route("/remove-budget", methods=['PUT', 'POST'])
+@app.route("/remove-budget", methods=['POST'])
 def remove_budget_data(db, name, tripName, budgetID):
     db.child('users').child(name).child('trips').child(tripName).child('Budget').child(budgetID).remove()
 
