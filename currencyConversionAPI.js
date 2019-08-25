@@ -1,21 +1,43 @@
-// set endpoint and your access key
-endpoint = 'latest'
-access_key = 'API_KEY';
+// set endpoint and your API key
+var endpoint = 'latest';
+var access_key = 'eb6b41d7d579f20927547891fd31bfa4';
 
-// get the most recent exchange rates via the "latest" endpoint:
+var exchangeRates
+
+// get the most recent exchange rates via the "latest"
 $.ajax({
-    url: 'http://data.fixer.io/api/' + endpoint + '?access_key=' + access_key,   
+    url: 'http://data.fixer.io/api/' + endpoint + '?access_key=' + access_key,  
     dataType: 'jsonp',
     success: function(json) {
-
-        // exchange rata data is stored in json.rates
-        alert(json.rates.GBP);
-        
-        // base currency is stored in json.base
-        alert(json.base);
-        
-        // timestamp can be accessed in json.timestamp
-        alert(json.timestamp);
-        
+        exchangeRates = json.rates;
+        console.log("Rates received!")
     }
+});
+
+$(function(){
+    $("#checkRate").click(function(){
+        console.log("Button pressed");
+
+        var fromCurr = $("#fromField").val();
+        var toCurr = $("#toField").val();
+
+        console.log(fromCurr);
+        console.log(toCurr);
+        console.log(exchangeRates.CAD);
+        console.log(exchangeRates.USD);
+        console.log(exchangeRates[fromCurr]);
+        console.log(exchangeRates[toCurr]);
+
+        if (fromCurr in exchangeRates && toCurr in exchangeRates){
+            //
+            var exchangeValue = exchangeRates[toCurr]/exchangeRates[fromCurr];
+            console.log(exchangeValue);
+
+            $("#test").text(exchangeValue);
+        }
+
+        else{
+            console.log("The currencies do not match or do not exist, please try again");
+        }
+    });
 });
