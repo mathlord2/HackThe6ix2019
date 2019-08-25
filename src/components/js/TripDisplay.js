@@ -5,6 +5,8 @@ import AddExpense from "./AddExpense"
 
 class TripDisplay extends React.Component {
   static propTypes = {
+    user: PropTypes.string,
+    password: PropTypes.string,
     start: PropTypes.string,
     end: PropTypes.string
   }
@@ -37,8 +39,8 @@ class TripDisplay extends React.Component {
   return(
     <div className="App">
       <ExpensePanel 
-      user=PropTypes.string,
-      password=PropTypes.string,
+      user={this.props.user}
+      password={this.props.password}
 
       clickHandler={this.handleClick} 
       expenses={this.state.expenses} 
@@ -49,8 +51,8 @@ class TripDisplay extends React.Component {
       ></ExpensePanel>
 
       <AddExpense 
-      user=PropTypes.string,
-      password=PropTypes.string,
+      user={this.props.user}
+      password={this.props.password}
       
       clickHandler={this.handleClick} 
       expenses={this.state.expenses} 

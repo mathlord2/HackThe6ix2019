@@ -8,4 +8,12 @@ if (process.env.NODE_ENV !== 'production') {
    console.log('Looks like we are in development mode!');
 }
 
-ReactDOM.render(<App />, document.getElementById("root"));
+function Index(props) {
+    const isLoggedIn = props.isLoggedIn;
+    if (isLoggedIn) {
+        return <App />;
+    }
+    return <Login />;
+}
+
+ReactDOM.render(<Index isLoggedIn={false} />, document.getElementById("root"));
