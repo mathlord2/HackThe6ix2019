@@ -3,13 +3,22 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/")
-def init_users(db):
-    db.child('users').set({'init': True})
+config = {
+        "apiKey": "AIzaSyCIsJXzbLiJwO-IJAUkFMn-eA4QXKsAlyg",
+        "authDomain": "budgetcation.firebaseapp.com",
+        "databaseURL": "https://budgetcation.firebaseio.com/",
+        "storageBucket": "gs://budgetcation.appspot.com/",
+        "serviceAccount": "budgetcation-firebase.json"
+}
+
+firebase = pyrebase.initialize_app(config)
+auth = firebase.auth()
+db = firebase.database()
 
 
-@app.route("/read", methods=['GET'])
-def read_data(db) -> dict:
+
+@app.route("/", methods=['GET'])
+def read_data() -> dict:
     """Returns a JSON of the entire firebase database of the project
 
     SAMPLE RETURN: {'users':{'token1': {'name': 'Martin',
@@ -19,40 +28,46 @@ def read_data(db) -> dict:
     return db.child('users').get().val()
 
 
+@app.route("/reset")
+def init_users():
+    db.child('users').set({'init': True})
+
+
 @app.route("/new-profile", methods=['POST'])
-def create_user_profile(db, userToken, name): #Done
+def create_user_profile(name): #Done
     db.child('users').update({name: {'trips': {}, 'token ID': userToken}})
 
 
 @app.route("/new-trip", methods=['POST'])
-def create_trip_plan(db, name, tripName, tripLoc):
+def create_trip_plan(name, tripName, tripLoc):
     db.child('users').child(name).child('trips').update({tripName:{'Location': tripLoc,
                                                           'Budget': {}}})
 
 
 @app.route("/add-budget", methods=['POST'])
-def push_budget(db, name, tripName, transID, transName, transAmount):
+def push_budget(name, tripName, transID, transName, transAmount):
     db.child('users').child(name).child('trips').child(tripName).child('Budget').\
         update({str(transID): {'name': str(transName), 'amount': transAmount}})
 
 
 @app.route("/remove-trip", methods=['POST'])
-def remove_trip_data(db, name, tripName):
+def remove_trip_data(name, tripName):
     db.child('users').child(name).child('trips').child(tripName).remove()
 
 
 @app.route("/reset-budget", methods=['POST'])
-def reset_budget_data(db, name, tripName):
+def reset_budget_data(name, tripName):
     db.child('users').child(name).child('trips').child(tripName).child('Budget').set({})
 
 
 @app.route("/remove-budget", methods=['POST'])
-def remove_budget_data(db, name, tripName, budgetID):
+def remove_budget_data(name, tripName, budgetID):
     db.child('users').child(name).child('trips').child(tripName).child('Budget').child(budgetID).remove()
 
 
 if __name__ == '__main__':
     app.run(port=5000)
+
 
     ###Settings
     config = {
@@ -91,24 +106,24 @@ if __name__ == '__main__':
     #init_users(db)
 
     ###MUST HAVE USER PROFILE BEFORE TRIP PLANS
-    create_user_profile(db, userToken, name)
+    create_user_profile(name)
 
     ###Will come from user
     tripName = 'summer'
     tripLoc = 'dubai'
 
     ###MUST HAVE TRIP PLANS BEFORE LIVE TRANSACTIONS
-    create_trip_plan(db, name, tripName, tripLoc)
-    create_trip_plan(db, name, 'Get Arrested', 'China')
+    create_trip_plan(name, tripName, tripLoc)
+    create_trip_plan(name, 'Get Arrested', 'China')
 
     ###EXAMPLE FOR GENERATING MULTIPLE BUDGETS WITH DIFFERENT NAMES
-    ###The transactionID must always be string
+    ###The transactioncID must always be string
     ###EXAMPLE DATA TYPE: {transID: {'name':'food','amount':10}# }}
     ###push_budget(db, userToken, name, tripName, transID, transName, transAmount)
-    push_budget(db, name, tripName, '25', 'food', 10)
-    push_budget(db, name, 'Get Arrested', '26', 'Donation for China', 10000000)
+    push_budget(name, tripName, '25', 'food', 10)
+    push_budget(name, 'Get Arrested', '26', 'Donation for China', 10000000)
 
-    reset_budget_data(db, name, tripName)
+    #reset_budget_data(db, name, tripName)
 
     #budgetID = 8
     #remove_budget_data(db, userToken, name, tripName, budgetID)
@@ -116,7 +131,5 @@ if __name__ == '__main__':
     #remove_trip_data(db, userToken, name, tripName)
 
     # Read test
-    #userInfo = read_data(db)
-    #print(userInfo)
-
-
+    userInfo = read_data()
+    print(userInfo)
