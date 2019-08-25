@@ -1,0 +1,33 @@
+.Expenses {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.Expenses tr:nth-child(even) {
+    background-color: rgb(204, 228, 255);
+}
+
+th {
+    text-align: left;
+}
+
+th, td {
+    padding: 1em;
+}
+
+table, th, td {
+    border: 1px solid rgb(204, 228, 255);
+    border-collapse: collapse;
+}
+
+i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: black;
+}
+
+i:hover {
+    color: grey;
+}

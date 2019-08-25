@@ -1,0 +1,128 @@
+#sidebar {
+  z-index: 2;
+  width: 0;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-x: hidden;
+  background-color: lightgrey;
+  text-align: center;
+}
+
+#sidebar #closeSideBar {
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+
+#sidebar #closeSideBar:hover h1, #sidebar a:hover h1 {
+  color: white;
+}
+
+#sidebar a {
+  cursor: pointer;
+}
+
+#sidebar input {
+  padding: 5px;
+  border: none;
+  border-bottom: 2px solid black;
+  margin-bottom: 40px;
+  width: 60%;
+  margin-right: 10px;
+}
+
+#sidebar #addVisit {
+  padding: 5px;
+  background-color: #3939fd;
+}
+
+#sidebar #vacations {
+  float: left;
+  width: 47.5%;
+}
+
+#sidebar #vacations .show-hide {
+  background-color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#sidebar #vacations .dropdownContent {
+  display: none;
+  position: absolute;
+}
+
+#sidebar #vacations .dropdownContent .vacation {
+  background-color: white;
+  border: none;
+  padding: 10px 20px;
+  position: relative;
+  cursor: pointer;
+}
+
+#sidebar #vacations .dropdownContent .vacation p {
+  margin-right: 10px;
+}
+
+#sidebar #vacations .dropdownContent .vacation i {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: black;
+}
+
+#sidebar #vacations .dropdownContent .vacation i:hover {
+  color: #a1a1a1;
+}
+
+#sidebar #vacations .dropdownContent .vacation:nth-child(2n) {
+  background-color: #cecefc;
+}
+
+#sidebar #categories {
+  float: right;
+  width: 47.5%;
+}
+
+#sidebar #categories .show-hide {
+  background-color: white;
+  padding: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#sidebar #categories .dropdownContent {
+  display: none;
+  position: absolute;
+  right: 0;
+}
+
+#sidebar #categories .dropdownContent .category {
+  background-color: white;
+  border: none;
+  padding: 10px 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+#sidebar #categories .dropdownContent .category p {
+  margin-right: 10px;
+}
+
+#sidebar #categories .dropdownContent .category i {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: black;
+}
+
+#sidebar #categories .dropdownContent .category i:hover {
+  color: #a1a1a1;
+}
+
+#sidebar #categories .dropdownContent .category:nth-child(2n) {
+  background-color: #cecefc;
+}
