@@ -51,13 +51,12 @@ module.exports = {
     }),
     new HtmlWebpackPlugin({
       hash: true,
-      template: './src/index.html',
-      filename: './index.html'
+      template: './public/index.html',
+      filename: 'index.html'
     }),
   ],
   output: {
-    path: path.resolve(__dirname, '/dist'),
+    path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    publicPath: "./dist/"
   }
 };

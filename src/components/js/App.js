@@ -9,8 +9,8 @@ function App() {
   return(
     <div className="App">
       <SideBar></SideBar>
-      <ExpensePanel></ExpensePanel>
-      <AddExpense></AddExpense>
+      <ExpensePanel startCurrency="CAD" endCurrency="USD"></ExpensePanel>
+      <AddExpense currency="CAD"></AddExpense>
     </div>
   );
 }

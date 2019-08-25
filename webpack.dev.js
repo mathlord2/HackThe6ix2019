@@ -14,11 +14,9 @@ module.exports = merge(common, {
     ]
   },
   devServer: {
-    contentBase: './dist',
-    compress: true,
-    publicPath: "http://localhost:3000/dist/",
-    port: 3000,
-    hotOnly: true
+    contentBase: "./public",
+    publicPath: "/",
+    hot: true
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()

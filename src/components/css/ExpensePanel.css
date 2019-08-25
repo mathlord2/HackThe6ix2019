@@ -2,6 +2,15 @@
     background-color: #eee;
 }
 
+th {
+    text-align: left;
+}
+
+th, td {
+    padding: 1em;
+}
+
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid #eee;
+    border-collapse: collapse;
 }
