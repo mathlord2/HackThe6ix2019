@@ -11,31 +11,34 @@ def read_data(db) -> dict:
     """
     return db.child('users').get().val()
 
+
 def init_users(db):
     db.child('users').set({'init': True})
 
 
-def create_user_profile(db, userToken, name): #Done
-    db.child('users').update({name: {'trips': {}}}, userToken)
+def create_user_profile(db, name): #Done
+    db.child('users').update({name: {'trips': {}}})
 
 
-def create_trip_plan(db, userToken, name, tripName, tripLoc):
+def create_trip_plan(db, name, tripName, tripLoc):
     db.child('users').child(name).child('trips').update({tripName:{'Location': tripLoc,
-                                                          'Budget': {}}}, userToken)
-
-def push_budget(db, userToken, name, tripName, transID, transName, transAmount):
-    db.child('users').child(name).child('trips').child(tripName).child('Budget').update({str(transID): {'name': str(transName), 'amount': transAmount}},userToken)
+                                                          'Budget': {}}})
 
 
-def remove_trip_data(db, userToken, name, tripName):
+def push_budget(db, name, tripName, transID, transName, transAmount):
+    db.child('users').child(name).child('trips').child(tripName).child('Budget').\
+        update({str(transID): {'name': str(transName), 'amount': transAmount}})
+
+
+def remove_trip_data(db, name, tripName):
     db.child('users').child(name).child('trips').child(tripName).remove()
 
 
-def reset_budget_data(db, userToken, name, tripName):
-    db.child('users').child(name).child('trips').child(tripName).child('Budget').set({}, userToken)
+def reset_budget_data(db, name, tripName):
+    db.child('users').child(name).child('trips').child(tripName).child('Budget').set({})
 
 
-def remove_budget_data(db, userToken, name, tripName, budgetID):
+def remove_budget_data(db, name, tripName, budgetID):
     db.child('users').child(name).child('trips').child(tripName).child('Budget').child(budgetID).remove()
 
 
@@ -84,14 +87,16 @@ if __name__ == '__main__':
 
     ###MUST HAVE TRIP PLANS BEFORE LIVE TRANSACTIONS
     create_trip_plan(db, userToken, name, tripName, tripLoc)
+    create_trip_plan(db, userToken, name, 'Get Arrested', 'China')
 
     ###EXAMPLE FOR GENERATING MULTIPLE BUDGETS WITH DIFFERENT NAMES
     ###The transactionID must always be string
     ###EXAMPLE DATA TYPE: {transID: {'name':'food','amount':10}# }}
     ###push_budget(db, userToken, name, tripName, transID, transName, transAmount)
     push_budget(db, userToken, name, tripName, '25', 'food', 10)
+    push_budget(db, userToken, name, 'Get Arrested', '26', 'Donation for China', 10000000)
 
-    #reset_budget_data(db, userToken, name, tripName)
+    reset_budget_data(db, userToken, name, tripName)
 
     #budgetID = 8
     #remove_budget_data(db, userToken, name, tripName, budgetID)
