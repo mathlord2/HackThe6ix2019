@@ -51,9 +51,6 @@ function switchToSignUp(none, block) {
     block.style.display = "block";
 }
 
-// Reference messages collection
-var messagesRef = firebase.database().ref('messages');
-
 // Submit form
 function submitForm(e) {
     var name = getInputVal('name');
