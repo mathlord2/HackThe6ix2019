@@ -106,18 +106,27 @@ a, button {
   text-align: center;
 }
 
-.sidebar #closeSideBar {
+.sidebar .closeSideBar {
   position: absolute;
   right: 10px;
   top: 0;
 }
 
-.sidebar #closeSideBar:hover h1, .sidebar a:hover h1 {
+.sidebar .closeSideBar:hover h1, .sidebar a:hover h1 {
   color: white;
 }
 
 .sidebar a {
   cursor: pointer;
+}
+
+.sidebar #switchVacation {
+  padding: 10px;
+  background-color: #2c2cfd;
+}
+
+.sidebar select {
+  padding: 7px;
 }
 
 #addVacation {
@@ -132,7 +141,6 @@ a, button {
 
 #addVacation #add-vacation {
   margin-left: 10px;
-  border: none;
   background-color: #6767c5;
   color: white;
   padding: 10px;
@@ -189,6 +197,18 @@ a, button {
 
 #vacationInfo {
   display: none;
+}
+
+#vacationInfo i {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+  color: black;
+}
+
+#vacationInfo i:hover {
+  color: grey;
 }
 
 #vacationInfo #categories {

@@ -105,13 +105,13 @@ a, button {
   background-color: lightgrey;
   text-align: center;
 
-  #closeSideBar {
+  .closeSideBar {
     position: absolute;
     right: 10px;
     top: 0;
   }
 
-  #closeSideBar:hover, a:hover {
+  .closeSideBar:hover, a:hover {
     h1 {
       color: white;
     }
@@ -119,6 +119,15 @@ a, button {
 
   a {
     cursor: pointer;
+  }
+
+  #switchVacation {
+    padding: 10px;
+    background-color: rgb(44, 44, 253);
+  }
+
+  select {
+    padding: 7px;
   }
 }
 
@@ -133,7 +142,6 @@ a, button {
 
   #add-vacation {
     margin-left: 10px;
-    border: none;
     background-color: rgb(103, 103, 197);
     color: white;
     padding: 10px;
@@ -194,6 +202,18 @@ a, button {
 
 #vacationInfo {
   display: none;
+
+  i {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    color: black;
+  }
+
+  i:hover {
+    color: grey;
+  }
 
   #categories {
     float: left;

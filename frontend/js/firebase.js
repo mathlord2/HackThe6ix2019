@@ -13,7 +13,6 @@ firebase.auth().onAuthStateChanged(function(user) {
             $('.header h1').html("Welcome, " + email_id + ".");
         }
 
-        window.alert("Login successful!");
     } else {
         document.getElementById("user_div").style.display = "none";
         document.getElementById("login_div").style.display = "block";
@@ -50,6 +49,9 @@ function switchToSignUp(none, block) {
     none.style.display = "none";
     block.style.display = "block";
 }
+
+// Reference messages collection
+var messagesRef = firebase.database().ref();
 
 // Submit form
 function submitForm(e) {

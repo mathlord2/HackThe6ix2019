@@ -56,9 +56,11 @@
                 </div>
             
                 <div class="sidebar">
-                    <a id="closeSideBar">
+                    <a class="closeSideBar">
                         <h1>&times;</h1>
                     </a>
+                    <br>
+                    <br>
                     <a id="signOut">
                         <h1>Sign Out</h1>
                     </a>
@@ -74,24 +76,33 @@
                 <div class="vacations">
                     <!--Vacations are in the following format:
                         <div class="vacation"><i class="fa fa-trash"> {nameOfCity}</i></div>-->
+                        <div class="vacation"><i class="fa fa-trash"></i> Beijing</div>
+                        <div class="vacation"><i class="fa fa-trash"></i> Mumbai</div>
                 </div>
             </div>
             
             <div id="vacationInfo">
-                <table id="categories">
-                    <div class="category">General</div>
-                    <div class="category">Accommodations</div>
-                    <div class="category">Tickets</div>
-                    <div class="category">Food</div>
-                </table>
-            </div>
-            <table>
-                <tr>
-                    <th></th>
-                </tr>
-                <tr>
-                </tr>
-            </table>
+                <i class="fa fa-bars"></i>
+                <div class="sidebar">
+                    <a class="closeSideBar">
+                        <h1>&times;</h1>
+                    </a>
+                    <br>
+                    <br>
+                    <a id="signOut">
+                        <h1>Sign Out</h1>
+                    </a>
+                    <select id="tripsMenu">
+                        <option>Trip:</option>
+                    </select>
+                    <button id="switchVacation">Go</button>
+                    <select id="categories">
+                        <option>Category:</option>
+                    </select>
+                    <button id="categoryUpdate">Update</button>
+                </div>
+                <br>
+                <h1 align="center" id="tripName"></h1>
             </div>
 
         </div>
