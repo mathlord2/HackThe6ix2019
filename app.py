@@ -62,13 +62,13 @@ def read_budget_data(name, tripName) -> list:
 
 
 @app.route("/reset", methods=['POST'])
-def init_users():
+def reset():
     db.child('users').set({'init': True})
 
 
 @app.route("/new-profile", methods=['POST'])
 def create_user_profile(name): #Done
-    db.child('users').update({name: {'trips': {}, 'token ID': userToken}})
+    db.child('users').update({name: {'trips': {}}})
 
 
 @app.route("/new-trip", methods=['POST'])
