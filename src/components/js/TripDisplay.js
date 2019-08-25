@@ -22,7 +22,7 @@ class TripDisplay extends React.Component {
 
 
 
-    $.ajax(backendHostURL,{
+    $.ajax(backendHostURL + '/read',{
       headers: {
         'Authorization': 'Bearer ',
         'Access-Control-Allow-Origin': '*'

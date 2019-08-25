@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import "../css/AddExpense.css";
 
 class AddExpense extends React.Component {
-
     static propTypes = {
         user: PropTypes.string,
         password: PropTypes.string,
