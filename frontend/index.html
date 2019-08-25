@@ -6,6 +6,7 @@
         <link rel='stylesheet' type='text/css' href="css/main.css">
         <link rel='stylesheet' type='text/css' href="css/firebase.css">
         <link rel='stylesheet' type='text/css' href="css/normalize.css">
+        <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -30,11 +31,22 @@
 
     <body>
         <div id="login_div">
-            <h1 align="center">BudgetCation</h1>
+            <h1 align="center">BudgetCation: Login</h1>
             <input type="email" placeholder="Email" id="email_field" />
             <input type="password" placeholder="Password" id="password_field" />
             <button id="loginBtn">Login</button>
+            <button id="switch1">Switch to Sign Up</button>
         </div>
+
+        <form id="newUserForm">
+            <h1 align="center">BudgetCation: Sign Up</h1>
+            <input type="text" placeholder="Name" name="name" id="name" required>
+            <input type="email" placeholder="Email" name="email" id="email" required>
+            <input type="password" placeholder="Password" name="password" id="password" required>
+            <input type="text" placeholder="Home Location" name="homeLocation" id="homeLocation" required>
+            <button type="submit" id="signUpButton">Sign Up</button>
+            <button id="switch2">Switch to Login</button>
+        </form>
         
         <div id="user_div">
             <div id="main">
