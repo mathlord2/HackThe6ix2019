@@ -1,5 +1,6 @@
 import pyrebase
 from flask import Flask
+from collections import OrderedDict
 
 app = Flask(__name__)
 
@@ -28,7 +29,39 @@ def read_data() -> dict:
     return db.child('users').get().val()
 
 
-@app.route("/reset")
+@app.route("/read-trip", methods=['GET'])
+def read_trip_data(name) -> list:
+    """Returns a JSON of the entire firebase database of the project
+
+    """
+    trip_list = dict(db.child('users').child(name).child('trips').get().val())
+
+    trip_names = []
+
+    for key in trip_list.keys():
+        trip_names.append(key)
+
+    return trip_names
+
+
+@app.route("/read-trip-budget", methods=['GET'])
+def read_budget_data(name, tripName) -> list:
+    """Returns a JSON of the entire firebase database of the project
+
+    """
+    budget_list = dict(db.child('users').child(name).child('trips').
+                       child(tripName).child('Budget').get().val())
+
+    transaction_list = []
+
+    for key in budget_list.keys():
+        transaction_list.append(budget_list[key])
+
+    return transaction_list
+
+
+
+@app.route("/reset", methods=['POST'])
 def init_users():
     db.child('users').set({'init': True})
 
@@ -49,6 +82,9 @@ def push_budget(name, tripName, transID, transName, transAmount):
     db.child('users').child(name).child('trips').child(tripName).child('Budget').\
         update({str(transID): {'name': str(transName), 'amount': transAmount}})
 
+@app.route("/remove-user", methods=['POST'])
+def remove_user(name):
+    db.child('users').child(name).remove()
 
 @app.route("/remove-trip", methods=['POST'])
 def remove_trip_data(name, tripName):
@@ -66,7 +102,12 @@ def remove_budget_data(name, tripName, budgetID):
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    #read_trip_data('bill')
+    #read_budget_data('bill', 'Get Arrested')
+    #remove_user('bill')
+
+    '''
+    #app.run(port=5000)
 
 
     ###Settings
@@ -78,19 +119,19 @@ if __name__ == '__main__':
         "serviceAccount": "budgetcation-firebase.json"
     }
 
-    firebase = pyrebase.initialize_app(config)
+    #firebase = pyrebase.initialize_app(config)
 
     ###This comes from flask
-    #username = "martinchakchak@yahoo.ca"
-    #password = "NuclearRevengeance"
-    #name = 'martin'
-    username = "bill87@gmail.com"
-    password = "password"
-    name = 'bill'
+    username = "martinchakchak@yahoo.ca"
+    password = "NuclearRevengeance"
+    name = 'martin'
+    #username = "bill87@gmail.com"
+    #password = "password"
+    #name = 'bill'
 
     ###This needs to be run in order to do anything
-    auth = firebase.auth()
-    db = firebase.database()
+    #auth = firebase.auth()
+    #db = firebase.database()
 
 
     ###User login using the flask given-info
@@ -133,3 +174,4 @@ if __name__ == '__main__':
     # Read test
     userInfo = read_data()
     print(userInfo)
+    '''
