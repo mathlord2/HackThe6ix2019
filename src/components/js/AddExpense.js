@@ -12,14 +12,14 @@ class AddExpense extends React.Component {
         currency: PropTypes.string
     }
 
-    handleClick = () => {
+    handleClick = (name, amount) => {
         $.ajax(backendHostUrl + '/tasks', {
             headers: {
                 'Authorization': 'Bearer ',
                 'Access-Control-Allow-Origin': '*'
             },
             method: 'POST',
-            data: JSON.stringify({'user': this.props.user, 'password': this.props.password, 'name' : , 'amount' : }),
+            data: JSON.stringify({'user': this.props.user, 'password': this.props.password, 'name' : name, 'amount' : amount}),
             contentType : 'application/json'
         }).then(function(data){
             this.props.clickHandler(data);
@@ -29,9 +29,9 @@ class AddExpense extends React.Component {
     render() {
         return (
             <form>
-                <input type="text" name="Expense"></input>
-                <input type="text" name={"Price " + '(' + this.props.currency + ')'}></input>
-                <button className="add-expense"><div>Add</div></button>
+                <input className="expense" type="text" name="Expense"></input>
+                <input className="price" type="text" name={"Price " + '(' + this.props.currency + ')'}></input>
+                <button className="add-expense" onclick="handleClick()"><div>Add</div></button>
             </form>
         );
     }

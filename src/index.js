@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/js/App.js";
+import Login from "./components/js/Login.js";
 import "./index.css"
 import "./normalize.css"
 
@@ -16,4 +17,4 @@ function Index(props) {
     return <Login />;
 }
 
-ReactDOM.render(<Index isLoggedIn={false} />, document.getElementById("root"));
+ReactDOM.render(<Login />, document.getElementById("root"));

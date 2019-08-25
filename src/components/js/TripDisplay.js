@@ -1,5 +1,6 @@
 import React, { Component} from "react";
 import "../css/TripDisplay.css";
+import PropTypes from "prop-types";
 import ExpensePanel from "./ExpensePanel.js"
 import AddExpense from "./AddExpense"
 
@@ -36,30 +37,32 @@ class TripDisplay extends React.Component {
     this.setState(expenses);
   };
 
-  return(
-    <div className="App">
-      <ExpensePanel 
-      user={this.props.user}
-      password={this.props.password}
+  render() {
+    return(
+      <div className="App">
+        <ExpensePanel 
+        user={this.props.user}
+        password={this.props.password}
 
-      clickHandler={this.handleClick} 
-      expenses={this.state.expenses} 
-      startCurrency={this.state.start} 
-      endCurrency={this.state.end} 
-      startExchange={this.props.startRate} 
-      endExchange={this.props.endRate} 
-      ></ExpensePanel>
+        clickHandler={this.handleClick} 
+        expenses={this.state.expenses} 
+        startCurrency={this.state.start} 
+        endCurrency={this.state.end} 
+        startExchange={this.props.startRate} 
+        endExchange={this.props.endRate} 
+        ></ExpensePanel>
 
-      <AddExpense 
-      user={this.props.user}
-      password={this.props.password}
-      
-      clickHandler={this.handleClick} 
-      expenses={this.state.expenses} 
-      currency={this.state.start}
-      ></AddExpense>
-    </div>
-  );
+        <AddExpense 
+        user={this.props.user}
+        password={this.props.password}
+
+        clickHandler={this.handleClick} 
+        expenses={this.state.expenses} 
+        currency={this.state.start}
+        ></AddExpense>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default TripDisplay;
