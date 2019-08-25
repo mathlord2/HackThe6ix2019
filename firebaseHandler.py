@@ -79,24 +79,24 @@ if __name__ == '__main__':
     #init_users(db)
 
     ###MUST HAVE USER PROFILE BEFORE TRIP PLANS
-    create_user_profile(db, userToken, name)
+    create_user_profile(db, name)
 
     ###Will come from user
     tripName = 'summer'
     tripLoc = 'dubai'
 
     ###MUST HAVE TRIP PLANS BEFORE LIVE TRANSACTIONS
-    create_trip_plan(db, userToken, name, tripName, tripLoc)
-    create_trip_plan(db, userToken, name, 'Get Arrested', 'China')
+    create_trip_plan(db, name, tripName, tripLoc)
+    create_trip_plan(db, name, 'Get Arrested', 'China')
 
     ###EXAMPLE FOR GENERATING MULTIPLE BUDGETS WITH DIFFERENT NAMES
     ###The transactionID must always be string
     ###EXAMPLE DATA TYPE: {transID: {'name':'food','amount':10}# }}
     ###push_budget(db, userToken, name, tripName, transID, transName, transAmount)
-    push_budget(db, userToken, name, tripName, '25', 'food', 10)
-    push_budget(db, userToken, name, 'Get Arrested', '26', 'Donation for China', 10000000)
+    push_budget(db, name, tripName, '25', 'food', 10)
+    push_budget(db, name, 'Get Arrested', '26', 'Donation for China', 10000000)
 
-    reset_budget_data(db, userToken, name, tripName)
+    reset_budget_data(db, name, tripName)
 
     #budgetID = 8
     #remove_budget_data(db, userToken, name, tripName, budgetID)
