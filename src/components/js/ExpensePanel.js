@@ -3,23 +3,31 @@ import PropTypes from "prop-types";
 import "../css/ExpensePanel.css";
 
 class ExpensePanel extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            expenses: [['yes',1,3]]
-        }
-    }
-
-    handleClick = buttonName => {
-        //let index = this.state.expenses.indexOf();
-        
-        //this.setState(expenses.filter());
-    };
-
     static propTypes = {
+        user: PropTypes.string,
+        password: PropTypes.string,
+
+        clickHandler: PropTypes.func,
+        expenses: PropTypes.array,
         startCurrency: PropTypes.string, 
         endCurrency: PropTypes.string, 
+        startRate: PropTypes.number,
+        endRate: PropTypes.number
     }
+
+    handleClick = () => {
+        $.ajax(backendHostUrl + '/tasks', {
+            headers: {
+                'Authorization': 'Bearer ',
+                'Access-Control-Allow-Origin': '*'
+            },
+            method: 'POST',
+            data: JSON.stringify({}),
+            contentType : 'application/json'
+        }).then(function(data){
+            this.props.clickHandler(data);
+        });
+    };
 
     render() {
         return (

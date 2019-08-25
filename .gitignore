@@ -1,6 +1,7 @@
 #configuration
 .eslintrc.json
 dist
+venv
 # Logs
 logs
 *.log
