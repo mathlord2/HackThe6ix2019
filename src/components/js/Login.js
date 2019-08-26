@@ -1,70 +1,40 @@
-import React, { Component} from "react";
-import {hot} from "react-hot-loader";
-import "../css/Login.css";
+import React from "react";
+import PropTypes from "prop-types";
+import "../css/Firebase.css";
 
 class Login extends React.Component {
-    submitForm(e) {
-        var name = document.getElementById('name').value;
-        var email = document.getElementById('email').value;
-        var password = document.getElementById('password').value;
-        var homeLocation = document.getElementById('homeLocation').value;
-        firebase.auth().createUserWithEmailAndPassword(email, password).catch(function (error) {
+
+    login() {
+        var userEmail = document.getElementById("email_field").value;
+        var userPass = document.getElementById("password_field").value;
+
+        firebase.auth().signInWithEmailAndPassword(userEmail, userPass).catch(function (error) {
+            // Handle Errors here.
             var errorCode = error.code;
             var errorMessage = error.message;
 
-            if (errorCode == 'auth/email-already-in-use') {
-                alert('This username is already in use.');
-            } else {
-                alert(errorMessage);
-            }
-            console.log(error);
-        });
+            window.alert("Error : " + errorMessage);
 
-        e.preventDefault();
-
-        // Save message
-        saveMessage(name, password, email, homeLocation);
-
-        // Show alert
-        window.alert('Sign up successful!');
-
-        document.getElementById('newUserForm').style.display = 'none';
-        document.getElementById('user_div').style.display = 'block';
-
-        // Clear form
-        document.getElementById('newUserForm').reset();
-
-        //ACCESS EMAIL AND DATA THROUGH ATTRIBUTES FROM #USER_DIV
-        document.getElementById('user_div').setAttribute('email', email);
-        document.getElementById('user_div').setAttribute('password', password);
-
-        var newMessageRef = firebase.database().ref().push();
-        newMessageRef.set({
-            name, name,
-            email: email,
-            password: password,
-            homeLocation: homeLocation
+            // ...
         });
     }
 
-    switchToLogin() {
-        document.getElementById('login_div').style.display = "block";
-        document.getElementById('newUserForm').style.display = "none";
+    switchToSignUp() {
+        document.getElementById('login_div').style.display = "none";
+        document.getElementById('newUserForm').style.display = "block";
     }
 
     render() {
         return (
-            <form id="newUserForm" onSubmit={this.submitForm}>
-                <h1 align="center">BudgetCation: Sign Up</h1>
-                <input type="text" placeholder="Name" name="name" id="name" required />
-                <input type="email" placeholder="Email" name="email" id="email" required />
-                <input type="password" placeholder="Password" name="password" id="password" required />
-                <input type="text" placeholder="Home Location" name="homeLocation" id="homeLocation" required />
-                <button type="submit" id="signUpButton">Sign Up</button>
-                <button id="switch2" onClick={this.switchToLogin}>Switch to Login</button>
-            </form>
+            <div id="login_div">
+                <h1 align="center">BudgetCation: Login</h1>
+                <input type="email" placeholder="Email" id="email_field" />
+                <input type="password" placeholder="Password" id="password_field" />
+                <button id="loginBtn" onClick={this.login}>Login</button>
+                <button id="switch1" onClick={this.switchToSignUp}>Switch to Sign Up</button>
+            </div>
         );
     }
 }
 
-export default Login
+export default Login;

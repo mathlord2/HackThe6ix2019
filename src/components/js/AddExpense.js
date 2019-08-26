@@ -13,7 +13,7 @@ class AddExpense extends React.Component {
     }
 
     handleClick = (name, amount) => {
-        $.ajax(backendHostUrl + '/tasks', {
+        $.ajax(localhost + "/read-trip", {
             headers: {
                 'Authorization': 'Bearer ',
                 'Access-Control-Allow-Origin': '*'
