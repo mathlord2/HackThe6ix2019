@@ -1,18 +1,10 @@
-#login_div, #newUserForm {
+#login_form {
+  margin-top: 150px;
   margin: 0px auto;
   width: 30%;
-  display: none;
 }
 
-#login_div {
-  margin-top: 150px;
-}
-
-#newUserForm {
-  margin-top: 75px;
-}
-
-#login_div input, #newUserForm input {
+#login_form input {
   display: block;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -26,11 +18,11 @@
   -moz-transition: 0.3s;
 }
 
-#login_div input:focus, #newUserForm input:focus {
+#login_form input:focus {
   border: 1px solid #777;
 }
 
-#login_div button, #newUserForm button {
+#login_form button {
   border: none;
   float: left;
   background-color: #3e3ef5;
@@ -39,10 +31,10 @@
   color: white;
 }
 
-#login_div button:nth-child(2n), #newUserForm button:nth-child(2n) {
+#login_form button:nth-child(2n) {
   float: right;
 }
 
-#login_div button:hover, #newUserForm button:hover {
+#login_form button:hover {
   background-color: #6c6cfd;
 }

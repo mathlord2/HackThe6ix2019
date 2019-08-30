@@ -41,7 +41,7 @@ module.exports = {
       },
     ]
   },
-  resolve: { extensions: ["*", ".js", ".jsx"] },
+  resolve: { modules: ['node_modules', 'src'], extensions: ["*", ".js", ".jsx"] },
   plugins: [
     // new CleanWebpackPlugin(['dist/*']) for < v2 versions of CleanWebpackPlugin
     new CleanWebpackPlugin(),

@@ -1,0 +1,40 @@
+#newUserForm {
+    margin-top: 75px;
+    margin: 0px auto;
+    width: 30%;
+}
+
+#newUserForm input {
+    display: block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #fff;
+    padding: 15px;
+    outline: none;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+}
+
+#newUserForm input:focus {
+    border: 1px solid #777;
+}
+
+#newUserForm button {
+    border: none;
+    float: left;
+    background-color: #3e3ef5;
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+}
+
+#newUserForm button:nth-child(2n) {
+    float: right;
+}
+
+#newUserForm button:hover {
+    background-color: #6c6cfd;
+}

@@ -3,6 +3,9 @@
 dist
 venv
 .vscode
+
+
+
 # Logs
 logs
 *.log
