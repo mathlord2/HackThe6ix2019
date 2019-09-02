@@ -1,11 +1,12 @@
 {
-  "name": "basic-react-app",
+  "name": "BudgetCation",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web app for tracking travel expenses.",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "test": "jest"
   },
   "author": "",
   "license": "MIT",
@@ -16,6 +17,7 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.2",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^1.0.0",
@@ -24,6 +26,7 @@
     "file-loader": "^4.0.0",
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.8.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "react-hot-loader": "^4.3.11",
@@ -37,7 +40,6 @@
   "dependencies": {
     "firebase": "^6.4.2",
     "react": "^16.5.2",
-    "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^16.5.2",
     "react-router-dom": "^5.0.1"
   }

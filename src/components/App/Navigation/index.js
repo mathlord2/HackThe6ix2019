@@ -6,6 +6,8 @@ import { AuthUserContext } from '../../../Session';
 import SignOutButton from './SignOut';
 import * as ROUTES from '../../../constants/routes';
 
+import ErrorBoundary from '../../../testing/ErrorBoundary';
+
 
 const Navigation = () => (
   <div>
@@ -18,20 +20,24 @@ const Navigation = () => (
 );
 
 const NavigationAuth = () => (
-  <div>
-    <ul>
-      <li>
-        <Link to={ROUTES.HOME}>Home</Link>
-      </li>
-      <li>
-        <Link to={ROUTES.ACCOUNT}>Account</Link>
-      </li>
-      <li>
-        <SignOutButton />
-      </li>
-    </ul>
-  </div>          
-)
+  <ErrorBoundary>
+  <AuthUserContext.Consumer>
+    {authUser =>
+      <div>
+        <div>{authUser}</div>
+        <ul>
+          <li>
+            <Link to={ROUTES.ACCOUNT}>Account</Link>
+          </li>
+          <li>
+            <SignOutButton />
+          </li>
+        </ul>
+      </div>
+    }
+  </AuthUserContext.Consumer>  
+  </ErrorBoundary>
+);
 
 const NavigationNonAuth = () => (
   <ul>
