@@ -11,7 +11,7 @@ import Navigation from './Navigation';
 import LandingPage from './Landing';
 import SignUpPage from './SignUp';
 import SignInPage from './SignIn';
-import HomeContainer from './HomeContainer';
+import HomePage from './Home';
 import AccountPage from './Account';
 import PasswordForgetPage from './PasswordForget';
 
@@ -22,12 +22,14 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-
+          <ErrorBoundary>
+            <Navigation></Navigation>
+          </ErrorBoundary>
           <hr/>
           <Route exact path={ROUTES.LANDING} component={LandingPage} />
           <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
           <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-          <Route path={ROUTES.HOME} component={HomeContainer} />
+          <Route path={ROUTES.HOME} component={HomePage} />
           <Route path={ROUTES.ACCOUNT} component={AccountPage} />
           <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage} />
         </div>

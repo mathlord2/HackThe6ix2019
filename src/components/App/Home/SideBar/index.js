@@ -6,7 +6,6 @@ import {Button, AddButton} from './Button';
 
 class SideBar extends React.Component {
     static propTypes = {
-        email: PropTypes.string,
         clickHandler: PropTypes.func,
         value: PropTypes.object,
     }
@@ -34,7 +33,7 @@ class SideBar extends React.Component {
 
     render() {
         let data = this.props.value;
-        var json = data[this.props.email].destinations;
+        var json = data.destinations;
         var arr = [];
         Object.keys(json).forEach(function(key) {
             arr.push(key);
@@ -46,8 +45,10 @@ class SideBar extends React.Component {
                         <a>Vacations</a>
                         <ul>
                             {
-                                arr.map(item => (
-                                    <li><Button clickHandler={this.handleClick} item={item}></Button></li>
+                                arr.map((item, index) => (
+                                    <li key={index}>
+                                        <Button clickHandler={this.handleClick} item={item}></Button>
+                                    </li>
                                 ))
                             }
                             {this.displayElements}

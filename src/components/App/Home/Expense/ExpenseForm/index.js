@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./ExpenseForm.css";
+import {withFirebase} from '../../../../../Firebase';
 
 const INITIAL_STATE = {
     name: '',
@@ -11,7 +12,6 @@ const INITIAL_STATE = {
 class ExpenseForm extends React.Component {
     static propTypes = {
         submitHandler: PropTypes.func,
-        email: PropTypes.string,
         destination: PropTypes.string,
     }
 
@@ -31,7 +31,7 @@ class ExpenseForm extends React.Component {
         //        'Access-Control-Allow-Origin': '*'
         //    },
         //    method: 'POST',
-        //    data: JSON.stringify({'email': this.props.email, 'destination': this.props.destination, 'name' : name, 'price' : Number(price)}),
+        //    data: JSON.stringify({'token': this.props.firebase.auth().getToken(), 'destination': this.props.destination, 'name' : name, 'price' : Number(price)}),
         //    contentType : 'application/json',
         //}).then(function(data){
         //    this.setState({ ...INITIAL_STATE });
@@ -72,4 +72,4 @@ class ExpenseForm extends React.Component {
     }
 }
 
-export default ExpenseForm;
+export default withFirebase(ExpenseForm);

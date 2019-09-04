@@ -1,11 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
-
 import "./Navigation.css"
-import { AuthUserContext } from '../../../Session';
-import SignOutButton from './SignOut';
-import * as ROUTES from '../../../constants/routes';
 
+import SignOutButton from './SignOut';
+import DropDown from './Dropdown';
+
+import { AuthUserContext } from '../../../Session';
+import * as ROUTES from '../../../constants/routes';
 import ErrorBoundary from '../../../testing/ErrorBoundary';
 
 
@@ -13,31 +15,37 @@ const Navigation = () => (
   <div>
     <AuthUserContext.Consumer>
       {authUser =>
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+        authUser ? <NavigationAuth authUser={authUser.displayName}/> : <NavigationNonAuth />
       }
     </AuthUserContext.Consumer>
   </div>
 );
 
-const NavigationAuth = () => (
-  <ErrorBoundary>
-  <AuthUserContext.Consumer>
-    {authUser =>
+class NavigationAuth extends React.Component {
+  static propTypes = {
+    authUser: PropTypes.string,
+  }
+
+  render() {
+    return(
       <div>
-        <div>{authUser}</div>
-        <ul>
-          <li>
-            <Link to={ROUTES.ACCOUNT}>Account</Link>
-          </li>
-          <li>
-            <SignOutButton />
-          </li>
-        </ul>
+        <DropDown content={this.props.authUser}>
+          <ul>
+            <li>
+              <Link to={ROUTES.HOME}>Home</Link>
+            </li>
+            <li>
+              <Link to={ROUTES.ACCOUNT}>Account</Link>
+            </li>
+            <li>
+              <SignOutButton />
+            </li>
+          </ul>
+        </DropDown>
       </div>
-    }
-  </AuthUserContext.Consumer>  
-  </ErrorBoundary>
-);
+    );
+  }
+}
 
 const NavigationNonAuth = () => (
   <ul>

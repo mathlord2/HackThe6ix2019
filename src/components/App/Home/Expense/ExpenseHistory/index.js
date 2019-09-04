@@ -5,28 +5,29 @@ import {withDataContext} from '../../context';
 
 class ExpenseHistory extends React.Component {
     static propTypes = {
-        addedExpenses: PropTypes.arr,
-        email: PropTypes.string,
         destination: PropTypes.string,
         category: PropTypes.string,
     }
 
     render() {
         let data = this.props.value;
-        var json = data[this.props.email].destinations[this.props.destination].expenses[this.props.category];
+        var json = data.destinations[this.props.destination].expenses[this.props.category];
         var arr = [];
         Object.keys(json).forEach(function(key) {
             arr.push(json[key]);
         });
         return (
             <table className="Expenses">
-                <tr>
-                    <th>Name</th>
-                    <th>Cost</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
                     {
-                        arr.map(item => (
-                            <tr key={item.id}>
+                        arr.map((item, index) => (
+                            <tr key={index}>
                                 <th>{item.name}</th>
                                 <th>{item.price}
                                     <button>&times;</button>
@@ -34,7 +35,9 @@ class ExpenseHistory extends React.Component {
                             </tr>
                         ))
                     }
-                    {this.props.addedExpenses}
+                </tbody>
+                <tfoot>
+                </tfoot>
             </table>
         );
     }

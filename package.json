@@ -4,7 +4,7 @@
   "description": "Web app for tracking travel expenses.",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js --history-api-fallback",
     "build": "webpack --config webpack.prod.js",
     "test": "jest"
   },
