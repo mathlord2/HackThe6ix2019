@@ -2,7 +2,9 @@ import React from "react";
 import "./SideBar.css";
 import {withDataContext} from '../context';
 import PropTypes from 'prop-types';
-import {Button, AddButton} from './Button'; 
+import {Button} from './Button'; 
+import Form from './Form';
+import ErrorBoundary from '../../../../testing/ErrorBoundary';
 
 class SideBar extends React.Component {
     static propTypes = {
@@ -10,13 +12,20 @@ class SideBar extends React.Component {
         value: PropTypes.object,
     }
 
+    componentDidMount() {
+        window.addEventListener("click", this.closeForm);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("click", this.closeForm);
+    }
+
     constructor(props) {
         super(props);
 
-        this.displayElements = []
-
         this.state = {
             addedDestinations: [],
+            formToggle: ''
         }
     }
 
@@ -25,10 +34,18 @@ class SideBar extends React.Component {
     }
 
     addDestination = destination => {
-        this.displayElements.push(<li><Button clickHandler={this.handleClick} item={destination}></Button></li>);
         this.setState({
-            displayElements : this.displayData,
+            addedDestinations : this.state.addedDestinations.concat([destination])
         });
+    }
+
+    openForm = () => {
+        this.setState({formToggle: '_open'});
+    }
+
+    closeForm = e => {
+        if (e.target.id != 'addDestinationForm');
+        this.setState({formToggle: ''});
     }
 
     render() {
@@ -40,22 +57,29 @@ class SideBar extends React.Component {
         });
         return (
             <div>
-                <ul>
-                    <li>
-                        <a>Vacations</a>
-                        <ul>
-                            {
-                                arr.map((item, index) => (
-                                    <li key={index}>
-                                        <Button clickHandler={this.handleClick} item={item}></Button>
-                                    </li>
-                                ))
-                            }
-                            {this.displayElements}
-                            <li><AddButton clickHandler={this.addDestination}></AddButton></li>
-                        </ul>
-                    </li>
-                </ul>
+                <a>Vacations</a>
+                <div>
+                {
+                    arr.map((item, index) => (
+                        <li key={index}>
+                            <Button clickHandler={this.handleClick} item={item}></Button>
+                        </li>
+                    ))
+                }
+                </div>
+                <div>
+                {
+                    this.state.addedDestinations.map((item, index) => (
+                        <li key={index}>
+                            <Button clickHandler={this.handleClick} item={item}></Button>
+                        </li>
+                    ))
+                }
+                </div>
+                <ErrorBoundary>
+                <li><div id={"addDestinationForm" + this.state.formToggle}><Form destinationHandler={this.addDestination}/></div></li>
+                <li><button onClick={this.openForm}>+ Add Vacation</button></li>
+                </ErrorBoundary>
             </div>
         );
     }

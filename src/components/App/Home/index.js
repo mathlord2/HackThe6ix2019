@@ -120,10 +120,11 @@ class HomePage extends React.Component {
   render() {
     if(this.state.destination) {
       return( 
-        <ErrorBoundary>
         <DataContext.Provider value={this.state.data}>
           <div>
+            <ErrorBoundary>
             <SideBar clickHandler={this.changeDestination}></SideBar>
+            </ErrorBoundary>
             <Tabs>
               <div label="General">
                 <Expense destination={this.state.destination} category="General"></Expense>
@@ -143,7 +144,6 @@ class HomePage extends React.Component {
             </Tabs>
           </div>
         </DataContext.Provider>
-        </ErrorBoundary>
       );
     } else {
       return(

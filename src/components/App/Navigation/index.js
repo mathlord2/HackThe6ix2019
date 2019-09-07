@@ -8,8 +8,6 @@ import DropDown from './Dropdown';
 
 import { AuthUserContext } from '../../../Session';
 import * as ROUTES from '../../../constants/routes';
-import ErrorBoundary from '../../../testing/ErrorBoundary';
-
 
 const Navigation = () => (
   <div>
