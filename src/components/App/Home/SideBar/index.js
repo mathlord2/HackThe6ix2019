@@ -3,8 +3,8 @@ import "./SideBar.css";
 import {withDataContext} from '../context';
 import PropTypes from 'prop-types';
 import {Button} from './Button'; 
-import Form from './Form';
 import ErrorBoundary from '../../../../testing/ErrorBoundary';
+import Form from './Form'
 
 class SideBar extends React.Component {
     static propTypes = {
@@ -12,17 +12,8 @@ class SideBar extends React.Component {
         value: PropTypes.object,
     }
 
-    componentDidMount() {
-        window.addEventListener("click", this.closeForm);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("click", this.closeForm);
-    }
-
     constructor(props) {
         super(props);
-
         this.state = {
             addedDestinations: [],
             formToggle: ''
@@ -43,10 +34,30 @@ class SideBar extends React.Component {
         this.setState({formToggle: '_open'});
     }
 
-    closeForm = e => {
-        if (e.target.id != 'addDestinationForm');
+    closeForm = () => {
         this.setState({formToggle: ''});
     }
+
+    setWrapperRef = node => {
+        this.wrapperRef = node;
+    }
+
+    handleClickOutside = event => {
+        if (this.wrapperRef && !this.wrapperRef.contains(event.target)) {
+           this.closeForm();
+        }
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutside);
+    }
+    
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutside);
+    }
+    
+
+
 
     render() {
         let data = this.props.value;
@@ -77,8 +88,10 @@ class SideBar extends React.Component {
                 }
                 </div>
                 <ErrorBoundary>
-                <li><div id={"addDestinationForm" + this.state.formToggle}><Form destinationHandler={this.addDestination}/></div></li>
-                <li><button onClick={this.openForm}>+ Add Vacation</button></li>
+                <div ref={this.setWrapperRef} className={"addDestinationForm" + this.state.formToggle}>
+                    <Form destinationHandler={this.addDestination} close={this.closeForm}></Form>
+                </div>
+                <button onClick={this.openForm}>+ Add Vacation</button>
                 </ErrorBoundary>
             </div>
         );

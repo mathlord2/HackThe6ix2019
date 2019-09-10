@@ -22,9 +22,8 @@ class ExpenseForm extends React.Component {
 
     onSubmit = event => {
         const { name, price } = this.state;
-        console.log(name);
-        console.log(price);
         this.props.submitHandler(name,price);
+        event.preventDefault();
         //$.ajax('localhost' + "/submit-expense", {
         //    headers: {
         //        'Authorization': 'Bearer ',

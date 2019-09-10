@@ -4,11 +4,13 @@ import ErrorBoundary from '../../../../../testing/ErrorBoundary';
 
 const INITIAL_STATE = {
     destination: '',
+    formVisible: false,
 };
 
 class Form extends React.Component {
     static propTypes = {
-        destinationHandler: PropTypes.func
+        destinationHandler: PropTypes.func,
+        close: PropTypes.func
     }
 
     constructor(props) {
@@ -16,9 +18,30 @@ class Form extends React.Component {
         this.state = {...this.INITIAL_STATE};
     }
     
+    handleClick = () => {
+        if (!this.state.formVisible) {
+            document.addEventListener('click', this.handleOutsideClick, false);
+        } else {
+            document.removeEventListener('click', this.handleOutsideClick, false);
+        }
+
+        this.setState(prevState => ({
+            popupVisible: !prevState.formVisible,
+        }));
+
+    }
+
+    handleOutsideClick = e => {
+        if (this.node.contains(e.target)) {
+            return;
+        }
+        this.handleClick();
+    }
+
     submitForm = event => {
-        console.log(this.state.destination);
         this.props.destinationHandler(this.state.destination);
+        this.props.close();
+        event.preventDefault();
     }
 
     onChange = event => {

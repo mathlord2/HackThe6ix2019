@@ -1,7 +1,7 @@
-#addDestinationForm {
+.addDestinationForm {
   display: none;
 }
 
-#addDestinationForm_open {
+.addDestinationForm_open {
   display: block;
 }

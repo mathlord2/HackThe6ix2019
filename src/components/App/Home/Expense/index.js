@@ -14,24 +14,24 @@ class Expense extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {
+            addedExpenses: [],
+        }
     } 
 
     handleSubmit = (name,price) => {
-        this.addedExpenses.push(
-            <tr>
-                <th>{name}</th>
-                <th>{price}
-                    <button>&times;</button>
-                </th>
-            </tr>
-        );
+        this.setState({addedExpenses: this.state.addedExpenses.concat({name: name, price: price})})
     }
 
-    render () {
+    handleRemove = expense => {
+        this.setState({addedExpenses: this.state.addedExpenses.filter(arrayItem => arrayItem !== expense)});
+    }
+
+    render() {
         return (
             <div>
                 <ErrorBoundary>
-                    <ExpenseHistory destination={this.props.destination} category={this.props.category}/>
+                    <ExpenseHistory removeHandler={this.handleRemove} destination={this.props.destination} category={this.props.category} addedExpenses={this.state.addedExpenses}/>
                 </ErrorBoundary>
                 <ErrorBoundary>
                     <ExpenseForm submitHandler={this.handleSubmit} destination={this.props.destination} />
